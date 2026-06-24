@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0f6bff">
+    <meta name="description" content="Классическая браузерная игра Морской бой с PWA, статистикой и тремя уровнями сложности.">
+    <title>Морской бой</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">HTML5 · CSS3 · Vanilla JS</p>
+          <h1>Морской бой</h1>
+        </div>
+        <div class="topbar__actions">
+          <button class="icon-button" id="themeToggle" type="button" aria-label="Переключить тему" title="Переключить тему">☾</button>
+          <button class="icon-button" id="soundToggle" type="button" aria-label="Включить или выключить звук" title="Звук">♪</button>
+          <button class="button button--ghost" id="newGameTop" type="button">Новая игра</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel setup-panel" id="setupPanel">
+          <div class="panel__header">
+            <div>
+              <h2>Расстановка кораблей</h2>
+              <p>Выберите корабль и поставьте его на своё поле. Корабли не могут касаться даже углами.</p>
+            </div>
+            <div class="setup-panel__controls">
+              <label class="field">
+                <span>Сложность</span>
+                <select id="difficultySelect">
+                  <option value="easy">Лёгкий</option>
+                  <option value="medium" selected>Средний</option>
+                  <option value="hard">Сложный</option>
+                </select>
+              </label>
+              <button class="button" id="rotateShip" type="button">Повернуть</button>
+              <button class="button button--secondary" id="randomPlacement" type="button">Случайно</button>
+              <button class="button button--danger" id="clearPlacement" type="button">Очистить</button>
+              <button class="button button--primary" id="startGame" type="button" disabled>Начать бой</button>
+            </div>
+          </div>
+
+          <div class="setup-grid">
+            <div class="board-wrap">
+              <div class="board-title">
+                <h3>Ваше поле</h3>
+                <span id="orientationLabel">Горизонтально</span>
+              </div>
+              <div class="board" id="setupBoard" aria-label="Поле для расстановки кораблей"></div>
+            </div>
+            <aside class="fleet-picker">
+              <h3>Корабли</h3>
+              <div id="fleetPicker"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="game-layout" id="gamePanel" hidden>
+          <div class="status-bar">
+            <div>
+              <p class="eyebrow">Ход</p>
+              <h2 id="turnStatus">Ваш ход</h2>
+            </div>
+            <div class="message-log" id="messageLog" aria-live="polite"></div>
+          </div>
+
+          <div class="battlefields">
+            <div class="board-wrap panel">
+              <div class="board-title">
+                <h3>Ваш флот</h3>
+                <span id="playerShipsLeft">10 кораблей</span>
+              </div>
+              <div class="board" id="playerBoard" aria-label="Поле игрока"></div>
+              <div class="fleet-status" id="playerFleetStatus"></div>
+            </div>
+
+            <div class="board-wrap panel">
+              <div class="board-title">
+                <h3>Поле компьютера</h3>
+                <span id="computerShipsLeft">10 кораблей</span>
+              </div>
+              <div class="board board--target" id="computerBoard" aria-label="Поле компьютера"></div>
+              <div class="fleet-status" id="computerFleetStatus"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel stats-panel">
+          <div class="panel__header">
+            <div>
+              <h2>Статистика</h2>
+              <p>Сохраняется локально в браузере.</p>
+            </div>
+          </div>
+          <div class="stats-grid" id="statsGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal" id="resumeModal" hidden>
+      <div class="modal__card">
+        <h2>Продолжить партию?</h2>
+        <p>Найдена незавершённая игра. Можно вернуться в бой или начать заново.</p>
+        <div class="modal__actions">
+          <button class="button button--primary" id="resumeGame" type="button">Продолжить</button>
+          <button class="button button--secondary" id="discardSave" type="button">Новая игра</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="resultModal" hidden>
+      <div class="modal__card modal__card--result">
+        <p class="eyebrow" id="resultKicker">Итог</p>
+        <h2 id="resultTitle">Победа</h2>
+        <p id="resultText">Флот противника уничтожен.</p>
+        <button class="button button--primary" id="newGameResult" type="button">Новая игра</button>
+      </div>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
