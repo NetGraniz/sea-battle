@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Морской бой">
+  <rect width="512" height="512" rx="112" fill="#0f6bff"/>
+  <path d="M92 322c42 24 78 24 120 0s78-24 120 0 78 24 120 0v58c-42 24-78 24-120 0s-78-24-120 0-78 24-120 0z" fill="#bfe8ff"/>
+  <path d="M142 266h250l-42 76H184z" fill="#ffffff"/>
+  <path d="M222 128h68v138h-68z" fill="#dbeafe"/>
+  <path d="M290 164l92 102h-92z" fill="#93c5fd"/>
+  <circle cx="180" cy="304" r="13" fill="#0f6bff"/>
+  <circle cx="256" cy="304" r="13" fill="#0f6bff"/>
+  <circle cx="332" cy="304" r="13" fill="#0f6bff"/>
+</svg>
