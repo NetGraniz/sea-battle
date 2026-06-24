@@ -87,17 +87,3 @@ python -m http.server 8000
 ```text
 http://localhost:8000/
 ```
-
-## Публикация на GitHub Pages
-
-В настройках репозитория включите GitHub Pages:
-
-```text
-Settings -> Pages -> Source: Deploy from a branch -> Branch: main -> /root
-```
-
-После публикации игра будет доступна по ссылке:
-
-```text
-https://netgraniz.github.io/sea-battle/
-```
